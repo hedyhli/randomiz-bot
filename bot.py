@@ -15,27 +15,23 @@ bot = commands.Bot(command_prefix=';')
 class Misc(commands.Cog):
     """Miscellanous Commands"""
 
-    @bot.command(name='say', help='say something for me')
+    @commands.command(name='say', help='say something for me')
     async def say(self, ctx, *args):
         await ctx.send(' '.join(args))
     
-    @bot.command(name='rep', help='repeat previous command')
-    async def rep(self, ctx):
-        if self.messages:
-            await ctx.send(self.messages[-1])
 
 class Main(commands.Cog):
     """Commands to generate things related to 'random'"""
 
-    @bot.command(name='int', help="get random integer between \'start\' and \'end\'")
-    async def random_int(self, ctx, start, end):
-        if not isinstance(start, int) or not isinstance(end, int):
-            await ctx.send('Arguments must all be integers!')
-            return
+    @commands.command(name='int', help="get random integer between 'start' and 'end'")
+    async def random_int(self, ctx, start: int, end: int):
+        # if not isinstance(start, int) or not isinstance(end, int):
+        #     await ctx.send('Arguments must all be integers!')
+        #     return
         integer = rd.randint(int(start), int(start))
         await ctx.send(integer)
     
-    @bot.command(name='choice', help='choose something from a list of choices (separate by space)')
+    @commands.command(name='choice', help='choose something from a list of choices (separate by space)')
     async def random_choice(self, ctx, *choices):
         await ctx.send(rd.choice(choices))
 
@@ -47,4 +43,5 @@ class Main(commands.Cog):
 
 
 bot.add_cog(Main())
+bot.add_cog(Misc())
 bot.run(TOKEN)
