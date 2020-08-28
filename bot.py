@@ -7,7 +7,7 @@ from discord.ext import commands
 
 
 TOKEN = environ.get('DISCORD_TOKEN')
-GUILD = environ.get('DISCORD_GUILD')
+
 
 bot = commands.Bot(command_prefix=';')
 
@@ -15,8 +15,8 @@ class Misc(commands.Cog):
     """Miscellanous Commands"""
 
     @commands.command(name='say', help='say something for me')
-    async def say(self, ctx, *args):
-        await ctx.send(' '.join(args))
+    async def say(self, ctx, *words):
+        await ctx.send(' '.join(words))
     
 
 class Main(commands.Cog):
