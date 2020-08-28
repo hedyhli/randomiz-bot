@@ -1,4 +1,4 @@
-from os import environ
+from os import getenv
 import random as rd
 import re
 
@@ -7,7 +7,8 @@ from discord.ext.commands import Bot, Cog, command
 
 from keep_alive import keep_alive
 
-TOKEN = environ.get('DISCORD_TOKEN')
+
+TOKEN = getenv('DISCORD_TOKEN')
 
 
 bot = Bot(command_prefix=';', help_command=None)
