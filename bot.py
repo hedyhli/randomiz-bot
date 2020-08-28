@@ -1,14 +1,13 @@
-import os
+from os import environ
 import random as rd
 import re
 
 import discord
 from discord.ext import commands
-from dotenv import load_dotenv
 
-load_dotenv()
-TOKEN = os.getenv('DISCORD_TOKEN')
-GUILD = os.getenv('DISCORD_GUILD')
+
+TOKEN = environ.get('DISCORD_TOKEN')
+GUILD = environ.get('DISCORD_GUILD')
 
 bot = commands.Bot(command_prefix=';')
 
@@ -31,7 +30,7 @@ class Main(commands.Cog):
         integer = rd.randint(int(start), int(start))
         await ctx.send(integer)
     
-    @commands.command(name='choice', help='choose something from a list of choices (separate by space)')
+    @commands.command(name='choice', help='choose something from a list (separate by space)')
     async def random_choice(self, ctx, *choices):
         await ctx.send(rd.choice(choices))
 
