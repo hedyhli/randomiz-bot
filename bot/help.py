@@ -18,11 +18,11 @@ class BotHelpCommand(HelpCommand):
         embed = (
             Embed(
                 title="Help for The Randomiz Bot",
-                description="A utility bot that provides you commands to get random integers, choices, and more\nUse `help <command>` to get help on a specific command (WIP).",
+                description="A utility bot that provides you commands to get random integers, choices, and more",
                 colour=0x41C03F,
             )
             .add_field(
-                name=f"\u200b\n**Main Commands**",
+                name=f"\u200b\n** Commands**",
                 value="\n".join(commands_help),
                 inline=False,
             )

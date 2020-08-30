@@ -21,6 +21,18 @@ class MainCog(Cog):
 
         await ctx.send(f"Pong; {round(bot.latency * 1000, 2)}ms")
 
+    @command()
+    async def about(self, ctx):
+        """Returns info about the bot"""
+
+        embed = discord.Embed(
+            title="Randomiz bot",
+            description="A utility bot that provides you commands to get random integers, choices, and more.\nCheck it out on [github](https://github.com/hedythedev/randomiz-bot/) or join the [support server](https://discord.gg/uwyYpt9) to learn more.",
+            color=0x41C03F,
+        )
+
+        await ctx.send(embed=embed)
+
     @command(name="int", aliases=["i", "integer"])
     async def randint(self, ctx, start: int = 0, end: int = 100):
         """get random integer between 'start' and 'end'
