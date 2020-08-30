@@ -1,1 +1,3 @@
-# random-bot
+# Randomiz Bot
+
+WIP!!!
