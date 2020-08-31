@@ -37,7 +37,15 @@ class MainCog(Cog):
     async def randint(self, ctx, start: int = 0, end: int = 100):
         """get random integer between 'start' and 'end'
 
-        start defaults to 0, end defaults to 100
+        start defaults to 0, end defaults to 100 - which means calling `r/int` will give you a random integer from 0 to 100
+
+        **What is an integer?**
+        > a number which is not a fraction; a whole number.
+
+        **Examples**
+        1. `r/int 1 50` - random integer between (including) 1 to 50
+        2. `r/int 100 1000` - random integer between (including) 100 to 1,000
+        3. `r/int -100 100` - negatives should work too
         """
         # if not isinstance(start, int) or not isinstance(end, int):
         #     await ctx.send('Arguments must all be integers!')
@@ -47,25 +55,49 @@ class MainCog(Cog):
 
     @command(aliases=["c", "ch", "choose"])
     async def choice(self, ctx, *choices):
-        """choose something from a list (separate by space)"""
+        """choose something from a list (separate by space)
+
+        **Examples**
+        1. `r/ch apples bananas grapes`
+        2. `r/ch hi hello`
+        3. `r/ch Alice Bob`
+        """
         await ctx.send(rd.choice(choices))
 
     @command(aliases=["sh", "shuf"])
     async def shuffle(self, ctx, *your_list):
-        """shuffle a list separated by spaces"""
+        """shuffle a list separated by spaces
+
+        **Examples**
+        1. `r/shuffle a b c`
+        2. `r/shuffle this is a cool bot`
+        """
         your_list = list(your_list)
         rd.shuffle(your_list)
         await ctx.send(" ".join(your_list))
 
     @command(aliases=["flip", "flipacoin", "co"])
     async def coin(self, ctx):
-        """Flips a coin and tells you if it's heads or tails"""
+        """Flips a coin and tells you if it's heads or tails
+
+        **Examples**
+        1. `r/flip` (this will give you either heads or tails)
+        """
         result = rd.choice(["heads", "tails"])
         await ctx.send("I flipped **" + result + "**!")
 
     @command(aliases=["roll", "rolladie", "rolladice", "d"])
     async def dice(self, ctx, sides: int = 6):
-        """Rolls a x-sided die (6 sides by default)"""
+        """Rolls a x-sided die (6 sides by default)
+
+        **Examples**
+        1. `r/roll` - roll a 6-sided die
+        2. `r/roll` - roll a 12-sided die
+
+        **Die vs. Dice?**
+        > in modern standard English dice is both the singular and the plural: 'throw the dice' could mean a reference to either one or more than one dice.
+        But here, I normally stick to 'die' when it's singular, 'dice' when it's plural.
+        """
         result = str(rd.randint(1, sides))
         await ctx.send(
             "I rolled a " + str(sides) + " sided die and got **" + result + "**!"
