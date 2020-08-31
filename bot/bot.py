@@ -21,7 +21,7 @@ class MainCog(Cog):
 
         await ctx.send(f"Pong; {round(bot.latency * 1000, 2)}ms")
 
-    @command()
+    @command(aliases=['info', 'bot'])
     async def about(self, ctx):
         """Returns info about the bot"""
 
