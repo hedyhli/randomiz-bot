@@ -21,7 +21,7 @@ class MainCog(Cog):
 
         await ctx.send(f"Pong; {round(bot.latency * 1000, 2)}ms")
 
-    @command(aliases=['info', 'bot'])
+    @command(aliases=["info", "bot"])
     async def about(self, ctx):
         """Returns info about the bot"""
 
@@ -56,6 +56,20 @@ class MainCog(Cog):
         your_list = list(your_list)
         rd.shuffle(your_list)
         await ctx.send(" ".join(your_list))
+
+    @command(aliases=["flip", "flipacoin", "co"])
+    async def coin(self, ctx):
+        """Flips a coin and tells you if it's heads or tails"""
+        result = rd.choice(["heads", "tails"])
+        await ctx.send("I flipped **" + result + "**!")
+
+    @command(aliases=["roll", "rolladie", "rolladice", "d"])
+    async def dice(self, ctx, sides: int = 6):
+        """Rolls a x-sided die (6 sides by default)"""
+        result = str(rd.randint(1, sides))
+        await ctx.send(
+            "I rolled a " + str(sides) + " sided die and got **" + result + "**!"
+        )
 
 
 bot = Bot(command_prefix=PREFIX, help_command=None)

@@ -8,7 +8,7 @@ class BotHelpCommand(HelpCommand):
 
         commands_obj = next(iter(mapping.values()))
         commands_help = [
-            "`" + self.get_command_signature(i) + "`" for i in commands_obj
+            "`" + self.get_command_signature(i).strip() + "`" for i in commands_obj
         ]
 
         for i in range(len(commands_help)):
