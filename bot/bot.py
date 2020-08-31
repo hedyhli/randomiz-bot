@@ -27,7 +27,7 @@ class MainCog(Cog):
 
         embed = discord.Embed(
             title="Randomiz bot",
-            description="A utility bot that provides you commands to get random integers, choices, and more.\nCheck it out on [github](https://github.com/hedythedev/randomiz-bot/) or join the [support server](https://discord.gg/uwyYpt9) to learn more.",
+            description="A 'random' bot that helps you commands to get random integers, choices, rolls dice, flips coins, and more.\nCheck it out on [github](https://github.com/hedythedev/randomiz-bot/) or join the [support server](https://discord.gg/uwyYpt9) to learn more.",
             color=0x41C03F,
         )
 
