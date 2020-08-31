@@ -23,7 +23,7 @@ class BotHelpCommand(HelpCommand):
         embed = (
             Embed(
                 title="Help for The Randomiz Bot",
-                description="A 'random' bot that helps you commands to get random integers, choices, rolls dice, flips coins, and more.\nUse `r/help command` to get help on a command.",
+                description="A 'random' bot that helps you to get random integers, choices, rolls dice, flips coins, and more.\nUse `r/help command` to get help on a command.",
                 colour=0x41C03F,
             )
             .add_field(
