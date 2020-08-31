@@ -27,7 +27,7 @@ class BotHelpCommand(HelpCommand):
                 colour=0x41C03F,
             )
             .add_field(
-                name=f"\u200b\n** Commands**",
+                name=f"\u200b\n**Commands**",
                 value="\n".join(commands_help),
                 inline=False,
             )
