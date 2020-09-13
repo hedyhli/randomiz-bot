@@ -53,7 +53,7 @@ class MainCog(Cog):
         integer = rd.randint(int(start), int(end))
         await ctx.send(integer)
 
-    @command(aliases=["c", "ch", "choose"])
+    @command(aliases=["ch", "choose"])
     async def choice(self, ctx, *choices):
         """choose something from a list (separate by space)
 
@@ -76,28 +76,34 @@ class MainCog(Cog):
         rd.shuffle(your_list)
         await ctx.send(" ".join(your_list))
 
-    @command(aliases=["flip", "flipacoin", "co"])
+    @command(aliases=["flip", "co"])
     async def coin(self, ctx):
         """Flips a coin and tells you if it's heads or tails
 
         **Examples**
         1. `r/flip` (this will give you either heads or tails)
         """
-        result = rd.choice(["heads", "tails"])
-        await ctx.send("I flipped **" + result + "**!")
 
-    @command(aliases=["roll", "rolladie", "rolladice", "d"])
+        await ctx.send(rd.choice(["Heads", "Tails"]))
+
+    @command(aliases=["roll"])
     async def dice(self, ctx, sides: int = 6):
         """Rolls a x-sided die (6 sides by default)
 
         **Examples**
         1. `r/roll` - roll a 6-sided die
-        2. `r/roll` - roll a 12-sided die
+        2. `r/roll 12` - roll a 12-sided die
 
         **Die vs. Dice?**
         > in modern standard English dice is both the singular and the plural: 'throw the dice' could mean a reference to either one or more than one dice.
         But here, I normally stick to 'die' when it's singular, 'dice' when it's plural.
         """
+
+        if sides < 2:
+            return await ctx.send(
+                f"Hmm... I don't think a {sides} sided die is possible"
+            )
+
         result = str(rd.randint(1, sides))
         await ctx.send(
             "I rolled a " + str(sides) + " sided die and got **" + result + "**!"

@@ -40,9 +40,18 @@ class BotHelpCommand(HelpCommand):
 
         await self.context.send(embed=embed)
 
+    def get_command_signature(self, command, aliases=False):
+        """Returns the full signature/usage of a command without aliases"""
+        if not aliases:
+            return f"{self.clean_prefix}{command.name} {command.signature}"
+
+        aliases = "|".join(command.aliases)
+        names = "{" + command.name + "|" + aliases + "}"
+        return f"{self.clean_prefix}{names} {command.signature}"
+
     async def send_command_help(self, command):
-        embed = Embed(title=f"**`{self.get_command_signature(command)}`**").add_field(
-            name="\u200b", value=command.help
-        )
+        embed = Embed(
+            title=f"**`{self.get_command_signature(command, True)}`**"
+        ).add_field(name="\u200b", value=command.help)
 
         await self.context.send(embed=embed)
