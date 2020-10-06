@@ -1,5 +1,6 @@
 from os import getenv
 import random as rd
+import asyncio
 
 import discord
 from discord.ext.commands import Bot, Cog, command
@@ -83,7 +84,9 @@ class MainCog(Cog):
         1. `r/flip` (this will give you either heads or tails)
         """
 
-        await ctx.send(":coin: " + rd.choice(["Heads", "Tails"]) + " :coin:")
+        msg = await ctx.send(":coin: Flipping a coin...")
+        await asyncio.sleep(1.5)
+        await msg.edit(content=f":sparkles: {rd.choice(['Heads', 'Tails'])}!")
 
     @command(aliases=["roll"])
     async def dice(self, ctx, sides: int = 6):
