@@ -83,7 +83,7 @@ class MainCog(Cog):
         1. `r/flip` (this will give you either heads or tails)
         """
 
-        await ctx.send(rd.choice(["Heads", "Tails"]))
+        await ctx.send(":coin: " + rd.choice(["Heads", "Tails"]) + " :coin:")
 
     @command(aliases=["roll"])
     async def dice(self, ctx, sides: int = 6):
