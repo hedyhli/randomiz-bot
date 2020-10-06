@@ -19,7 +19,7 @@ class MainCog(Cog):
     async def ping(self, ctx):
         """Checks latency"""
 
-        await ctx.send(f"Pong; {round(bot.latency * 1000, 2)}ms")
+        await ctx.send(f"Pong; {round(bot.latency * 1000, 3)}ms")
 
     @command(aliases=["info", "bot"])
     async def about(self, ctx):
@@ -84,9 +84,9 @@ class MainCog(Cog):
         1. `r/flip` (this will give you either heads or tails)
         """
 
-        msg = await ctx.send(":coin: Flipping a coin...")
+        msg = await ctx.send(":moneybag: Flipping a coin...")
         await asyncio.sleep(1.5)
-        await msg.edit(content=f":sparkles: {rd.choice(['Heads', 'Tails'])}!")
+        await msg.edit(content=f" {rd.choice(['Heads', 'Tails'])}!")
 
     @command(aliases=["roll"])
     async def dice(self, ctx, sides: int = 6):
@@ -107,8 +107,10 @@ class MainCog(Cog):
             )
 
         result = str(rd.randint(1, sides))
-        await ctx.send(
-            "I rolled a " + str(sides) + " sided die and got **" + result + "**!"
+        msg = await ctx.send(f"Rolling a {sides} sided die...")
+        await asyncio.sleep(1.5)
+        await msg.edit(
+            content=f"I rolled a **{result}**"
         )
 
 
