@@ -4,7 +4,6 @@ import random as rd
 import discord
 from discord.ext.commands import Bot, Cog, command
 
-from keep_alive import keep_alive
 from help import BotHelpCommand
 
 
@@ -115,5 +114,4 @@ bot = Bot(command_prefix=PREFIX, help_command=None)
 bot.add_cog(MainCog())
 bot.help_command = BotHelpCommand()
 
-keep_alive()
 bot.run(TOKEN)
